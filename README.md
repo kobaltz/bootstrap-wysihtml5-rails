@@ -45,6 +45,11 @@ app/assets/stylesheets/application.css
 *= require bootstrap-wysihtml5
 ```
 
+if you are using SASS: app/assets/stylesheets/application.scss
+``` scss
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
+```
+
 app/assets/javascripts/application.js
 ```javascript
 //= require bootstrap-wysihtml5
@@ -96,6 +101,11 @@ There is `simple_form` input which you can apply via `as: :wysihtml5` option.
 ```erb
 <%= f.input :content, as: :wysihtml5 %>
 ```
+Or with [bootstrap3-wysiwyg](https://github.com/bootstrap-wysiwyg/bootstrap3-wysiwyg#options) options
+
+```erb
+<%= f.input :content, as: :wysihtml5, wysihtml5: { locale: "es-ES" } %>
+```
 
 ## If using Turbolinks
 
@@ -103,6 +113,39 @@ There is `simple_form` input which you can apply via `as: :wysihtml5` option.
 $(document).on('page:load', function(){
   window['rangy'].initialized = false
 })
+```
+
+## Using bootstrap-wysihtml5-rails with Font Awesome
+
+In the case you're not using Glyphicons but Font-Awesome, here is how to make Wysihtml5 use Font-Awesome :
+
+```javascript
+$(elem).wysihtml5({ toolbar:{ "fa": true } });
+```
+
+## Passing options
+
+To activate direct html editing and disable blockquote:
+```
+  $('.wysihtml5').wysihtml5({'toolbar': {'blockquote': false, 'html': true}})
+```
+
+Toolbal default options are:
+
+```
+toolbar: {
+      'font-styles': true,
+      'color': false,
+      'emphasis': {
+        'small': true
+      },
+      'blockquote': true,
+      'lists': true,
+      'html': false,
+      'link': true,
+      'image': true,
+      'smallmodals': false
+    }
 ```
 
 ## License
